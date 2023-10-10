@@ -1,20 +1,11 @@
 import { useState } from "react"
 
-type Todo = {
-  id: string,
-  task: Todo,
-  complated: boolean,
-  isEditing: boolean
-}
-
-type Props = {
-  todo: string;
-  setTodo: React.Dispatch<React.SetStateAction<string>>;
-  addTodo: (e: React.FormEvent) => void;
+type TodoFormPorps = {
+  addTodo: (value: string) => void 
 }
 
 
-export default function TodoForm({addTodo}) {
+export default function TodoForm({addTodo}: TodoFormPorps) {
   const [value, setValue] = useState("")
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

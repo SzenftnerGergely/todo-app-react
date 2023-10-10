@@ -3,19 +3,13 @@ import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from "uuid"
 import Todo from "./Todo";
 import EditTodoForm from "./EditTodo";
-
-type Todo = {
-  id: string,
-  task: Todo,
-  completed: boolean,
-  isEditing: boolean
-}
+import { TodoType } from "../models";
 
 
 export default function TodoWrapper() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<TodoType[]>([])
 
-  const addTodo = (todo: Todo) => {
+  const addTodo = (todo: string) => {
     setTodos([...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false}])
     
   }
@@ -35,7 +29,7 @@ export default function TodoWrapper() {
     } : todo ))
   }
 
-  const editTask = (task, id) => {
+  const editTask = (task: string, id: string) => {
     setTodos(todos.map(todo => todo.id === id ? {
       ...todo, task, isEditing: !todo.isEditing
     } : todo))
@@ -46,7 +40,7 @@ export default function TodoWrapper() {
       <TodoForm addTodo={addTodo}/>
       {todos.map((todo, index) => (
         todo.isEditing ? (
-          <EditTodoForm editTodo={editTask} task={todo} />
+          <EditTodoForm editTodo={editTask} task={todo} key={index} />
         ) : (
           <Todo 
             task={todo} 

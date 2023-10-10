@@ -1,6 +1,13 @@
 import { useState } from "react"
+import { Todo } from "../models"
 
-export default function EditTodoForm({editTodo, task}) {
+type EditTodoFormPorps = {
+  editTodo: (value: string, taskId: string) => void 
+  task: Todo
+}
+
+
+export default function EditTodoForm({editTodo, task}: EditTodoFormPorps) {
   const [value, setValue] = useState(task.task)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
