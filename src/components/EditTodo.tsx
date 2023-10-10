@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { Todo } from "../models"
+import { TodoType } from "../models"
 
 type EditTodoFormPorps = {
   editTodo: (value: string, taskId: string) => void 
-  task: Todo
+  task: TodoType
 }
 
 
@@ -18,18 +18,17 @@ export default function EditTodoForm({editTodo, task}: EditTodoFormPorps) {
   
 
   return (
-    <form onSubmit={handleSubmit} className="TodoForm">
+    <form onSubmit={handleSubmit} className="flex justify-between items-center bg-[#1d232a] border border-[#3abff8] rounded-lg p-2 gap-2 mb-3">
       <input 
         type="text" 
         value={value}
-        className="todo-input" 
+        className="input input-bordered w-full max-w-xs" 
         placeholder="Update Task?" 
         onChange={(event) => setValue(event.target.value)}
       />
       <button 
         type="submit" 
-        className="bg-[#8758ff] text-white p-[0.55rem] ml-2 
-        border-none cursor-pointer active:scale-95"
+        className="btn btn-info"
       >Update Task
       </button>
     </form>

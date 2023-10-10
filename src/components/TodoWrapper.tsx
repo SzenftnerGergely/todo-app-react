@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 import Todo from "./Todo";
 import EditTodoForm from "./EditTodo";
 import { TodoType } from "../models";
+import Header from "./Header";
 
 
 export default function TodoWrapper() {
@@ -36,7 +37,8 @@ export default function TodoWrapper() {
   }
 
   return (
-    <div className="TodoWrapper">
+    <div className="bg-[#1A1A40] mt-[5rem] p-12 rounded-lg border border-blue-950">
+      <Header/>
       <TodoForm addTodo={addTodo}/>
       {todos.map((todo, index) => (
         todo.isEditing ? (

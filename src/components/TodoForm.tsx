@@ -16,18 +16,17 @@ export default function TodoForm({addTodo}: TodoFormPorps) {
   
 
   return (
-    <form onSubmit={handleSubmit} className="TodoForm">
+    <form onSubmit={handleSubmit} className=" w-full mb-4 flex gap-2 transition-all">
       <input 
         type="text" 
+        placeholder="Write a Todo here" 
+        className="input input-bordered input-info w-full max-w-xs" 
         value={value}
-        className="todo-input" 
-        placeholder="What is the task today?" 
         onChange={(event) => setValue(event.target.value)}
       />
       <button 
-        type="submit" 
-        className="bg-[#8758ff] text-white p-[0.55rem] ml-2 
-        border-none cursor-pointer active:scale-95"
+        type="submit"
+        className="btn btn-outline btn-info"
       >Add Task
       </button>
     </form>
